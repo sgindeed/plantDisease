@@ -4,4 +4,4 @@ torchvision
 pandas
 Pillow
 gunicorn
-fastapi
+Fastapi
