@@ -4,4 +4,6 @@ torchvision
 pandas
 Pillow
 gunicorn
-Fastapi
+fastapi
+uvicorn
+magnum
