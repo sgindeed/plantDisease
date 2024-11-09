@@ -9,11 +9,9 @@ import numpy as np
 import pandas as pd
 import torchvision.transforms.functional as TF
 
-# Load disease and supplement information
 disease_info = pd.read_csv('disease_info.csv', encoding='cp1252')
 supplement_info = pd.read_csv('supplement_info.csv', encoding='cp1252')
 
-# Load the CNN model
 model = CNN.CNN(39)
 model.load_state_dict(torch.load("plant_disease_model_1_latest.pt"))
 model.eval()
@@ -30,20 +28,22 @@ def prediction(image_path):
 
 app = FastAPI()
 
-# Serve static files
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
-# Home Page
 @app.get("/", response_class=HTMLResponse)
 async def home_page():
-    return """<h1>Welcome to Plant Disease Detector</h1>
-              <p>Use the form below to upload an image:</p>
-              <form action="/submit" method="post" enctype="multipart/form-data">
-                  <input type="file" name="image" accept="image/*" required>
-                  <button type="submit">Submit</button>
-              </form>"""
+    return """
+    <h1>Welcome to Plant Disease Detector</h1>
+    <p>Use the form below to upload an image:</p>
+    <form action="/submit" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" required>
+        <button type="submit">Submit</button>
+    </form>
+    <footer style="margin-top: 20px; font-size: 14px; color: #555;">
+        Made with ❤️ and ⚡ by Supratim
+    </footer>
+    """
 
-# Submit Image Page
 @app.post("/submit")
 async def submit(image: UploadFile = File(...)):
     filename = image.filename
@@ -71,7 +71,6 @@ async def submit(image: UploadFile = File(...)):
     }
     return response
 
-# Market Page
 @app.get("/market")
 async def market():
     supplements = []
