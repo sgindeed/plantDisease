@@ -87,3 +87,9 @@ if uploaded_file is not None:
                 st.write("No supplement information available for this disease.")
         else:
             st.write("No details found for the predicted disease.")
+
+st.markdown("""
+    <footer style="margin-top: 20px; font-size: 14px; text-align: center; color: #555;">
+        Made with ❤️ and ⚡ by Supratim
+    </footer>
+""", unsafe_allow_html=True)
