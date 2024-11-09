@@ -39,9 +39,9 @@ async def home_page():
         <input type="file" name="image" accept="image/*" required>
         <button type="submit">Submit</button>
     </form>
-    <footer style="margin-top: 20px; font-size: 14px; color: #555;">
+    <p style="margin-top: 20px; font-size: 14px; color: #555;">
         Made with ❤️ and ⚡ by Supratim
-    </footer>
+    </p>
     """
 
 @app.post("/submit")
